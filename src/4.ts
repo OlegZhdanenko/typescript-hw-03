@@ -1,17 +1,10 @@
 class Key {
-    private signature: number;
+    private signature: number= Math.random();
 
-    constructor() {
-        this.setSignature();
-    };
 
-    private setSignature(): void {
-        this.signature = Math.random()
-    };
 
     public getSignature(): number {
-        const { signature } = this;
-        return signature;
+        return this.signature;
     };
 };
 
@@ -19,17 +12,15 @@ class Person {
     constructor(private key: Key) {};
     
     public getKey(): number {
-        const homeKey = this.key.getSignature();
-        return homeKey;
+        return this.key.getSignature();
     };
 };
 
 abstract class House {
-    public door: boolean;
+    public door: boolean=false;
     public tenants: Person[] = [];
 
     constructor(public key: Key) { 
-        this.door = false;
     };
     
     public comeIn(person: Person): void {
